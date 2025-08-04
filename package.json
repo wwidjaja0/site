@@ -28,7 +28,7 @@
     "developer portfolio"
   ],
   "author": "William Widjaja <contact@wwidjaja.dev> (https://wwidjaja.dev)",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "bugs": {
     "url": "https://github.com/wwidjaja0/site/issues"
