@@ -1,0 +1,40 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "William Widjaja (wwidjaja0)'s personal site.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wwidjaja0/site.git"
+  },
+  "keywords": [
+    "personal website",
+    "portfolio",
+    "web developer",
+    "william widjaja",
+    "wwidjaja",
+    "wwidjaja0",
+    "eleventy",
+    "11ty",
+    "static site",
+    "frontend",
+    "html",
+    "css",
+    "javascript",
+    "developer portfolio"
+  ],
+  "author": "William Widjaja <contact@wwidjaja.dev> (https://wwidjaja.dev)",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/wwidjaja0/site/issues"
+  },
+  "homepage": "https://github.com/wwidjaja0/site#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
