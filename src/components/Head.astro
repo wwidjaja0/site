@@ -1,10 +1,5 @@
 ---
-import '../assets/global.css';
 import Font from '/fonts/DMSans-Regular.woff2';
-import Favicon from '/favicon.ico';
-import AppleTouchIcon from '../assets/icons/apple-touch-icon.png';
-import Favicon32 from '../assets/icons/favicon-32x32.png';
-import Favicon16 from '../assets/icons/favicon-16x16.png';
 import type { ImageMetadata } from 'astro';
 import OpenGraphImage from '../assets/imgs/opengraph.png';
 
@@ -60,10 +55,17 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image.src} />
 
-<!-- Icons -->
-<link rel="apple-touch-icon" sizes="180x180" href={AppleTouchIcon.src} />
-<link rel="icon" type="image/png" sizes="32x32" href={Favicon32.src} />
-<link rel="icon" type="image/png" sizes="16x16" href={Favicon16.src} />
-<link rel="shortcut icon" href="/favicon.ico" />
+<!-- Inspired by Masa Kudamatsu's "How to Favicon" in 2023 -->
 
-<link rel="manifest" href="/site.webmanifest" />
+<!-- Favicon -->
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+
+<!-- Android Chrome and Discord: Tab Color -->
+<meta name="theme-color" content="#45ffa9" />
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="/site.webmanifest">
