@@ -14,7 +14,6 @@ export interface Props {
 const {
   title = "William Widjaja",
   description = "Student, engineer, leader. Known for being 'Widjaja'.",
-  image,
   footerMsg = "welcome!",
 } = Astro.props;
 ---
@@ -22,7 +21,7 @@ const {
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={title} description={description} image={image} />
+    <Head title={title} description={description}/>
     <style>
       /* to avoid "Default styles for h1 elements are changing" */
       h1 {
