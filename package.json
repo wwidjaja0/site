@@ -1,15 +1,31 @@
 {
   "name": "site",
-  "version": "1.0.0",
+  "author": "William Widjaja <contact@wwidjaja.dev> (https://wwidjaja.dev)",
   "description": "William Widjaja (wwidjaja0)'s personal site.",
-  "main": "index.js",
-  "scripts": {
-    "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve"
+  "version": "1.0.0",
+  "homepage": "https://github.com/wwidjaja0/site#readme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wwidjaja0/site/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/wwidjaja0/site.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.1",
+    "@astrojs/netlify": "^6.5.3",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.4.1",
+    "astro": "^5.12.3",
+    "sharp": "^0.34.2"
   },
   "keywords": [
     "personal website",
@@ -18,23 +34,13 @@
     "william widjaja",
     "wwidjaja",
     "wwidjaja0",
-    "eleventy",
-    "11ty",
+    "astro",
+    "astrojs",
     "static site",
     "frontend",
     "html",
     "css",
     "javascript",
     "developer portfolio"
-  ],
-  "author": "William Widjaja <contact@wwidjaja.dev> (https://wwidjaja.dev)",
-  "license": "MIT",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/wwidjaja0/site/issues"
-  },
-  "homepage": "https://github.com/wwidjaja0/site#readme",
-  "dependencies": {
-    "@11ty/eleventy": "^3.1.2"
-  }
+  ]
 }

@@ -1,0 +1,26 @@
+---
+import NavLink from "./NavLink.astro"
+
+interface Props {
+  message?: string;
+}
+
+const { message = "welcome!" } = Astro.props;
+---
+
+<footer>
+  <nav>
+    <ul>
+      <li><NavLink href="/links">links</NavLink></li>
+      <li><NavLink href="/usual">usual</NavLink></li>
+      <li><NavLink href="/verify">verify</NavLink></li>
+      <li><NavLink href="/wish">wish</NavLink></li>
+    </ul>
+  </nav>
+  <p>&copy; 2025 William Widjaja</p>
+  <p>{message}</p>
+  <noscript>
+    This website's theme already automatically switches based on system
+    preferences even though JavaScript is disabled.
+  </noscript>
+</footer>

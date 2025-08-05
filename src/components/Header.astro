@@ -1,0 +1,42 @@
+---
+import { SITE_TITLE } from "../consts";
+import NavLink from "./NavLink.astro";
+import SunIcon from "../assets/icons/sun.svg";
+---
+
+<header>
+  <nav>
+    <top-nav>
+      <NavLink href="/" id="brand">
+        <img
+          src="/favicon.ico"
+          alt="Widjaja's Logo"
+          width="48px"
+          height="48px"
+        />
+        <h1 hidden>{SITE_TITLE}</h1>
+        <span><span>William</span> Widjaja</span>
+      </NavLink>
+    </top-nav>
+    <bottom-nav>
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+        <svg viewBox="0 0 100 40" width="30" height="30" aria-hidden="true">
+          <rect width="100" height="10"></rect>
+          <rect y="30" width="100" height="10"></rect>
+          <rect y="60" width="100" height="10"></rect>
+        </svg>
+      </label>
+      <ul class="menu">
+        <li><NavLink href="/about">about</NavLink></li>
+        <li><NavLink href="/garden">garden</NavLink></li>
+        <li><NavLink href="/now">now</NavLink></li>
+        <li><NavLink href="/contact">contact</NavLink></li>
+        <li><NavLink href="/work">work</NavLink></li>
+        <button type="button" style="display: none;" data-theme-toggle>
+          <img src={SunIcon.src} alt="Theme change button" />
+        </button>
+      </ul>
+    </bottom-nav>
+  </nav>
+</header>
