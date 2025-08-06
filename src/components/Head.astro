@@ -1,6 +1,4 @@
 ---
-import Font from "/fonts/DMSans-Regular.woff2";
-
 /**
  * Defines document metadata.
  * @property {string} [title]
@@ -10,7 +8,8 @@ import Font from "/fonts/DMSans-Regular.woff2";
 interface Props {
 	title?: string;
 	description?: string;
-	type?: string;
+	opengraphType?: string;
+	aboutURL?: URL;
 }
 
 /**
@@ -20,7 +19,8 @@ interface Props {
 const {
 	title = "William Widjaja",
 	description = 'Student, engineer, leader. Known for being "Widjaja".',
-	type = "website",
+	opengraphType = "website",
+	aboutURL = new URL('/about', Astro.site),
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -37,22 +37,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-
-<!-- Font preload -->
-
-<link
-	rel="preload"
-	href={Font}
-	as="font"
-	type="font/woff2"
-	crossorigin="anonymous"
-/>
+<link rel="author" href={aboutURL} />
 
 <!-- Inspired by Adam Coti's The Essential Meta Tags for Social Media -->
 
 <!-- Essential Social / Opengraph Tags -->
 <meta property="og:title" content={title} />
-<meta property="og:type" content={type} />
+<meta property="og:type" content={opengraphType} />
 <meta
 	property="og:image"
 	content="http://euro-travel-example.com/thumbnail.jpg"

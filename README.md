@@ -22,4 +22,4 @@ This tech stack was honestly super unnecessary for a static site. You learn the 
 
 - The CSE 134B course at UCSD guided by Professor Thomas Powell.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This codebase is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

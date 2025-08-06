@@ -6,8 +6,9 @@ import SunIcon from "../assets/imgs/sun.svg";
 <header>
   <nav>
     <top-nav>
-      <NavLink href="/" id="brand">
+      <a id="homepage" href="/">
         <img
+          class="spinner"
           src="/favicon.ico"
           alt="Widjaja's Logo"
           width="48px"
@@ -15,7 +16,7 @@ import SunIcon from "../assets/imgs/sun.svg";
         />
         <h1 hidden>William Widjaja</h1>
         <span><span>William</span> Widjaja</span>
-      </NavLink>
+      </a>
     </top-nav>
     <bottom-nav>
       <input type="checkbox" id="menu-toggle" hidden />
@@ -27,12 +28,12 @@ import SunIcon from "../assets/imgs/sun.svg";
         </svg>
       </label>
       <ul class="menu">
-        <li><NavLink href="/about">about</NavLink></li>
-        <li><NavLink href="/garden">garden</NavLink></li>
-        <li><NavLink href="/now">now</NavLink></li>
-        <li><NavLink href="/contact">contact</NavLink></li>
-        <li><NavLink href="/work">work</NavLink></li>
-        <button type="button" style="display: none;" data-theme-toggle>
+        <li><NavLink href="about.html">about</NavLink></li>
+        <li><NavLink href="garden.html">garden</NavLink></li>
+        <li><NavLink href="now.html">now</NavLink></li>
+        <li><NavLink href="contact.html">contact</NavLink></li>
+        <li><NavLink href="work.html">work</NavLink></li>
+        <button type="button" hidden data-theme-toggle>
           <img src={SunIcon.src} alt="Theme change button" />
         </button>
       </ul>
