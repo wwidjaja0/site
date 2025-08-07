@@ -1,12 +1,12 @@
 ---
-import { Image }from "astro:assets";
+import { Image } from "astro:assets";
 import ProfileImage from "../assets/imgs/me.jpg";
 
 interface Props {
-  name?: string;
-  pronouns?: string;
-  dob?: Date;
-  location?: string;
+	name?: string;
+	pronouns?: string;
+	dob?: Date;
+	location?: string;
 }
 
 const { name, pronouns, dob, location } = Astro.props;
@@ -14,34 +14,34 @@ const age = dob ? new Date().getFullYear() - dob.getFullYear() : "??";
 ---
 
 <style>
-  div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: var(--shadow, 5px 5px 10px rgba(0, 0, 0, 0.5));
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-inline: 1rem;
-    animation-name: profileCard;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
-  }
+	div {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+		border-radius: 1rem;
+		padding: 1rem;
+		margin-inline: 1rem;
+		animation-name: profileCard;
+		animation-duration: 0.5s;
+		animation-iteration-count: 1;
+	}
 
-  @media screen and (max-width: 768px) {
-    div {
-      flex-direction: column;
-      align-items: center;
-      margin: 1rem;
-    }
-  }
+	@media screen and (max-width: 768px) {
+		div {
+			flex-direction: column;
+			align-items: center;
+			margin: 1rem;
+		}
+	}
 </style>
 
 <div>
-  <Image src={ProfileImage} alt="An image of Widjaja" />
-  <section>
-    <h3>{name}</h3>
-    <p>Pronouns: {pronouns}</p>
-    <p>{age} years old</p>
-    <p>Based in {location}</p>
-  </section>
+	<Image src={ProfileImage} alt="An image of Widjaja" />
+	<section>
+		<h3>{name}</h3>
+		<p>Pronouns: {pronouns}</p>
+		<p>{age} years old</p>
+		<p>Based in {location}</p>
+	</section>
 </div>
