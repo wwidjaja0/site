@@ -1,41 +1,23 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/imgs/logo.png";
+
 import NavLink from "./NavLink.astro";
-import SunIcon from "../assets/imgs/sun.svg";
 ---
 
 <header>
   <nav>
     <top-nav>
-      <a id="homepage" href="/">
-        <img
-          class="spinner"
-          src="/favicon.ico"
-          alt="Widjaja's Logo"
-          width="48px"
-          height="48px"
-        />
-        <h1 hidden>William Widjaja</h1>
-        <span><span>William</span> Widjaja</span>
-      </a>
+      <NavLink href="/">
+        <Image id="logo" src={logo} alt="Logo of Widjaja" />
+      </NavLink>
     </top-nav>
     <bottom-nav>
-      <input type="checkbox" id="menu-toggle" hidden />
-      <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
-        <svg viewBox="0 0 100 40" width="30" height="30" aria-hidden="true">
-          <rect width="100" height="10"></rect>
-          <rect y="30" width="100" height="10"></rect>
-          <rect y="60" width="100" height="10"></rect>
-        </svg>
-      </label>
-      <ul class="menu">
-        <li><NavLink href="about.html">about</NavLink></li>
-        <li><NavLink href="garden.html">garden</NavLink></li>
-        <li><NavLink href="now.html">now</NavLink></li>
-        <li><NavLink href="contact.html">contact</NavLink></li>
-        <li><NavLink href="work.html">work</NavLink></li>
-        <button type="button" hidden data-theme-toggle>
-          <img src={SunIcon.src} alt="Theme change button" />
-        </button>
+      <ul>
+        <li><NavLink href="about">about</NavLink></li>
+        <li><NavLink href="garden">garden</NavLink></li>
+        <li><NavLink href="contact">contact</NavLink></li>
+        <li><NavLink href="work">work</NavLink></li>
       </ul>
     </bottom-nav>
   </nav>

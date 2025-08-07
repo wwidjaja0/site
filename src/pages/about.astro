@@ -1,37 +1,41 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 ---
 
-<Layout
-  title="about • will widjaja"
-  description="Student, engineer, leader. Known for being 'Widjaja'."
-  footerMsg="say my name"
+<BaseLayout
+  title="about"
+  description="I am a UCSD student studying computer science."
+  footerMsg="#opentowork"
 >
-  <main-header>
+  <hgroup>
     <h2>/about</h2>
-  </main-header>
+  </hgroup>
   <ProfileCard
-    description="Student, engineer, leader. Known for being 'Widjaja'."
-    width={200}
-    height={200}
+    name="William Widjaja"
+    pronouns="he/him"
+    dob={new Date(2005, 3, 31)}
+    location="La Jolla, CA"
   />
   <h3>Bio</h3>
   <p>
-    Student, engineer, leader. Sometimes cook. Sometimes singer. Known for being
-    'Widjaja'.
+    I am a computer science student at UCSD with a lot of curiosity and never
+    enough rice.
   </p>
   <h3>Professional</h3>
   <p>
-    I am a 3rd year Computer Science Student at UC San Diego (Expected Grad: Jun
+    I am a 3rd year Computer Science Student at UC San Diego (Expected Grad:
     2026). I also work part-time as a student representative at the UCSD Triton
     Box Office.
   </p>
   <p>I'm currently looking for an internship in tech.</p>
   <p>
-    I previously worked as an intern (2024) for a very small and new startup
-    called Saciva under the Break Through Tech AI program at UCLA. But before
-    college I worked at Chick-fil-A for almost 2 years.
+    I previously worked as an intern (2024) for a startup called Saciva under
+    the Break Through Tech AI program at UCLA. But before college I worked at
+    Chick-fil-A for almost 2 years.
+  </p>
+  <p>
+    Someday, I would like to make a succesful indie game.
   </p>
   <h3>Hobbies</h3>
   <p>
@@ -41,10 +45,9 @@ import ProfileCard from "../components/ProfileCard.astro";
   </p>
   <p>I love a good racket sport. Hit me up for a 1v1 or 2v2 :)</p>
   <p>
-    I love to watch anime. If I play video games they're usually very
-    competitive or purely with friends. Though I do love board games and one
-    game that combines both a competitive thinking aspect for me as well as a
-    social aspect is poker.
+    I love to watch anime, kdrama, or whatever other shows are good. If I play
+    video games they're usually competitive or with friends. Though I do love
+    board games. One game that combines a competitive, reasoning, and social
+    aspect is poker.
   </p>
-  <p>I'm usually always doing something and learning another.</p>
-</Layout>
+</BaseLayout>

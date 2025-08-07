@@ -1,31 +1,47 @@
 ---
-import DefaultProfileImage from "../assets/imgs/me.jpg";
+import { Image }from "astro:assets";
+import ProfileImage from "../assets/imgs/me.jpg";
 
 interface Props {
-  profileImage?: ImageMetadata;
-  description: string;
-  width: number;
-  height: number;
+  name?: string;
+  pronouns?: string;
+  dob?: Date;
+  location?: string;
 }
-const {
-  profileImage = DefaultProfileImage,
-  description = "",
-  width = "200px",
-  height = "200px",
-} = Astro.props;
+
+const { name, pronouns, dob, location } = Astro.props;
+const age = dob ? new Date().getFullYear() - dob.getFullYear() : "??";
 ---
 
-<div id="profile">
-  <img
-    src={profileImage.src}
-    alt={description}
-    width={width}
-    height={height}
-  />
+<style>
+  div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: var(--shadow, 5px 5px 10px rgba(0, 0, 0, 0.5));
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-inline: 1rem;
+    animation-name: profileCard;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    div {
+      flex-direction: column;
+      align-items: center;
+      margin: 1rem;
+    }
+  }
+</style>
+
+<div>
+  <Image src={ProfileImage} alt="An image of Widjaja" />
   <section>
-    <h3>William Widjaja</h3>
-    <p>Pronouns: he/him</p>
-    <p>20 years old</p>
-    <p>Based in San Diego / California</p>
+    <h3>{name}</h3>
+    <p>Pronouns: {pronouns}</p>
+    <p>{age} years old</p>
+    <p>Based in {location}</p>
   </section>
 </div>

@@ -2,14 +2,14 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<BaseLayout title={title} description={description}>
   <article>
     <div class="hero-image">
       {heroImage && <Image width={1200} height={600} src={heroImage} alt="" />}
@@ -32,7 +32,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       <slot />
     </div>
   </article>
-</Layout>
+</BaseLayout>
 
 <style>
   /* Prevent horizontal overflow */

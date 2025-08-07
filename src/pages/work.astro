@@ -1,16 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout
-  title="work • will widjaja"
-  description="A collection of my past work and projects."
-  footerMsg=`i'll take a browser cookie... and eat it`
+<BaseLayout
+  title="work"
+  description="Past works and projects of Widjaja"
+  footerMsg="Performative specimen"
 >
-  <main-header>
+  <hgroup>
     <h2>/work</h2>
     <p>Here is a collection of my past works and projects.</p>
-  </main-header>
+  </hgroup>
   <form method="GET">
     <search>
       <label for="search-box">Search by title</label>
@@ -44,4 +44,4 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </template>
   </section>
-</Layout>
+</BaseLayout>

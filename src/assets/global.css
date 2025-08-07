@@ -3,8 +3,8 @@
 @font-face {
     font-family: "DM Sans";
     src:
-        url("/fonts/DMSans-Regular.woff2") format("woff2"),
-        url("/fonts/DMSans-Regular.woff") format("woff");
+        url("../assets/fonts/DMSans-Regular.woff2") format("woff2"),
+        url("../assets/fonts/DMSans-Regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -12,7 +12,7 @@
 
 @keyframes profileCard {
     from {
-        transform: scale(0.9);
+        transform: scale(0.95);
         opacity: 0;
     }
 
@@ -56,7 +56,7 @@
 /** Global Styles **/
 
 * {
-    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+    font-family: "DM Sans", system-ui, Arial, Helvetica, sans-serif;
     font-size: 1.05rem;
     line-height: 2;
 
@@ -67,9 +67,8 @@
 }
 
 body {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas: "header main";
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     height: 100dvh;
     background: var(--background-color, #1c1c1c);
@@ -128,51 +127,46 @@ a {
     }
 }
 
-button {
-    background-color: var(--accent-color, #ff0045);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    margin: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 1s ease;
-
-    &:hover {
-        background-color: var(--primary-color, #a9ffff);
-        transition: background-color 0.1s ease;
-    }
+a[href*="http"]::after {
+    content: " ↗";
+    font-size: 0.8rem;
+    vertical-align: super;
 }
 
 header {
-    grid-area: header;
-    padding: 0 1.5rem;
-    border-right: 1px dashed var(--text-color, #ffffff);
+    border-block-end: 1px dashed var(--text-color, #ffffff);
 }
 
 nav {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 100%;
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 1rem 0;
 
     a {
+        display: flex;
         text-decoration: none;
+        padding: 0.25rem;
+        border-radius: 8px;
+    }
+
+    #logo {
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: rotate(10deg);
+        }
     }
 
     ul {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        margin: 1rem 0;
-        padding: 0;
+        gap: 1rem;
 
         li {
             list-style: none;
-            margin: 0.5rem 0;
         }
     }
 
@@ -181,112 +175,36 @@ nav {
     }
 }
 
-#homepage {
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    gap: 0.5rem;
-
-    &>span {
-        display: flex;
-        flex-direction: column;
-        font-size: 2.5rem;
-        font-weight: bold;
-        line-height: 1;
-    }
-}
-
-.spinner {
-    transition: transform 1s ease;
-
-    &:hover {
-        transition: transform 0.2s ease-in-out;
-        transform: rotate(360deg);
-    }
+.active {
+    background-color: var(--accent-color);
 }
 
 main {
-    grid-area: main;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     height: 100%;
-    overflow: hidden;
+    margin: 0 auto;
+    max-width: 768px;
+    width: 100%;
+    padding: 0 1rem;
 
-    /* Main content area */
-    &>div {
-        will-change: opacity;
-        flex: 1;
-        overflow-y: auto;
-        margin: auto;
-        padding: 1rem 2rem;
-        width: 90%;
-        max-width: 800px;
-
-        p {
-            margin: 0.5rem 0;
-        }
-
-        main-header {
-            margin: 2rem;
-        }
-
-        hgroup {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 5rem 0;
-
-            h2 {
-                font-size: 2.5rem;
-                margin: 0 1rem;
-            }
-        }
+    p {
+        margin: 0.5rem 0;
     }
 
-    &>footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1rem;
-        border-top: 1px dashed var(--text-color, #ffffff);
-
-        ul {
-            display: flex;
-            flex-direction: row;
-            margin: 0;
-            gap: 1rem;
-        }
+    h2 {
+        font-size: 2.5rem;
     }
 }
 
-#profile {
+footer {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
-    box-shadow: var(--shadow, 5px 5px 10px rgba(0, 0, 0, 0.5));
-    border-radius: 1rem;
-    padding: 1rem;
-    animation-name: profileCard;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
-}
-
-.wishlist {
-    list-style: none;
-
-    a {
-        transition: background-color 1s ease-in, color 1s ease-in;
-        background-color: transparent;
-        color: var(--primary-color, #a9ffff);
-        display: block;
-
-        &:hover {
-            transition: background-color 0.1s ease-out, color 0.1s ease-out;
-            background-color: var(--accent-color, #ff0045);
-            color: var(--text-color, #ffffff);
-        }
-    }
+    text-align: center;
+    padding: 0.5rem;
+    border-top: 1px dashed var(--text-color, #ffffff);
 }
 
 /* Scrollbar styles */
@@ -306,85 +224,12 @@ main {
     background: var(--accent-color, #ff0059);
 }
 
-@media screen and (max-width: 1200px) {
-    body {
-        &>main {
-            &>div {
-                min-width: 100%;
-            }
-        }
-    }
-
-    #profile {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
 @media screen and (max-width: 768px) {
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-
-    header {
-        border-right: 0;
-        border-bottom: 1px dashed var(--text-color, #ffffff);
-    }
-
     nav {
-        padding-top: 1rem;
+        margin: 0 1rem;
 
-        &>a {
-            margin-block-end: 1rem;
-        }
-
-        bottom-nav {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            label {
-                display: flex;
-
-            }
-        }
-
-        .menu {
-            display: none;
-        }
-
-        .hamburger {
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        #menu-toggle:checked~.menu {
-            display: flex;
-        }
-
-        .hamburger svg rect {
-            fill: var(--text-color, #ffffff);
-            transition: opacity 0.2s;
-        }
-
-        #menu-toggle:checked+.hamburger svg rect:nth-child(2) {
-            opacity: 0;
-        }
-    }
-
-    main {
-        main-header hgroup {
-            display: flex;
-            flex-direction: column;
-        }
-
-        &>div {
-            padding: 1rem;
-        }
-
-        footer nav {
-            padding: 0;
+        ul {
+            flex-wrap: wrap;
         }
     }
 }

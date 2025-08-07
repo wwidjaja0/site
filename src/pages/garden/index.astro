@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
@@ -9,18 +9,41 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<Layout
-  title="garden • will widjaja"
-  description="My digital garden contains my notes, thoughts, and original articles."
-  footerMsg=`remember to comment, like, and subscribe!`
+<style>
+  #wishlist {
+    list-style: none;
+
+    a {
+      transition:
+        background-color 1s ease-in,
+        color 1s ease-in;
+      background-color: transparent;
+      color: var(--primary-color, #a9ffff);
+      display: block;
+
+      &:hover {
+        transition:
+          background-color 0.1s ease-out,
+          color 0.1s ease-out;
+        background-color: var(--accent-color, #ff0045);
+        color: var(--text-color, #ffffff);
+      }
+    }
+  }
+</style>
+
+<BaseLayout
+  title="garden"
+  description="My digital garden contains my notes, thoughts, and original articles"
+  footerMsg=`Mind-boggling stuff`
 >
-  <main-header>
+  <hgroup>
     <h2>/garden</h2>
     <blockquote>
       <p>"Welcome to the jungle"</p>
-      <footer>— xQc, <cite>after getting his first sub</cite></footer>
+      <cite>— xQc, after getting his first sub</cite>
     </blockquote>
-  </main-header>
+  </hgroup>
   <section class="blog-grid">
     <ul class="posts-list">
       {
@@ -51,8 +74,37 @@ const posts = (await getCollection("blog")).sort(
         ))
       }
     </ul>
+    <h3>My Wishlist</h3>
+    <h4>Amazon</h4>
+    <ul id="wishlist">
+      <li>
+        <a href="https://a.co/d/1ig1zzC" target="_blank">
+          <img
+            src="https://m.media-amazon.com/images/I/61qEkZZOYHL._AC_SX466_.jpg"
+            alt="Image of EPOMAKER X Aula F108 PRO"
+            width="200px"
+          />
+          EPOMAKER X Aula F108 PRO
+        </a>
+      </li>
+      <li>
+        <a href="https://a.co/d/ccqe3U3" target="_blank">
+          <img
+            src="https://m.media-amazon.com/images/I/71y4dBd3woL._AC_SX466_.jpg"
+            alt="Image of MSI Gaming RTX 5060 Ti 16G"
+            width="200px"
+          />
+          MSI Gaming RTX 5060 Ti 16G
+        </a>
+      </li>
+    </ul>
+    <h4>Other</h4>
+    <ul class="wishlist">
+      <li>Money</li>
+      <li>Omakase</li>
+    </ul>
   </section>
-</Layout>
+</BaseLayout>
 
 <style>
   .blog-grid {
@@ -75,7 +127,9 @@ const posts = (await getCollection("blog")).sort(
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--surface-shadow, 0 4px 12px rgba(0, 0, 0, 0.1));
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .post-card:hover {
