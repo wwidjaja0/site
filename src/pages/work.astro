@@ -1,47 +1,294 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout
-  title="work • will widjaja"
-  description="A collection of my past work and projects."
-  footerMsg=`i'll take a browser cookie... and eat it`
->
-  <main-header>
-    <h2>/work</h2>
-    <p>Here is a collection of my past works and projects.</p>
-  </main-header>
-  <form method="GET">
-    <search>
-      <label for="search-box">Search by title</label>
-      <input
-        id="search-box"
-        name="query"
-        type="search"
-        placeholder="Look for a project..."
-      />
-      <fieldset>
-        <legend>Filter by tags</legend>
-        <label><input type="checkbox" name="tags" value="web" />Web</label>
-        <label><input type="checkbox" name="tags" value="ai" />AI</label>
-        <label><input type="checkbox" name="tags" value="music" />Music</label>
-        <label><input type="checkbox" name="tags" value="other" />Other</label>
-      </fieldset>
-      <button type="submit">Search</button>
-    </search>
-  </form>
-  <section>
-    <h3>Current</h3>
-    <p>
-      This is a placeholder, there is a hidden template for a card below me.
-    </p>
-    <template>
-      <h4>Title</h4>
-      <p>Description goes here.</p>
-      <img src="" alt="" />
-      <div>
-        <p>Categories go here.</p>
-      </div>
-    </template>
-  </section>
-</Layout>
+<script>
+	interface Project {
+		id: number;
+		title: string;
+		description: string;
+		link: string;
+		categories: string | string[];
+		image: string;
+	}
+
+	const tempArray: Project[] = [
+		{
+			id: 1,
+			title: "Personal Portfolio Website - Local",
+			description:
+				"This is the local version of what you would see on a backend.",
+			link: "/",
+			categories: "web",
+			image: "assets/imgs/me.jpg",
+		},
+		{
+			id: 2,
+			title: "MemorySpot",
+			description: "A Card-Based Location Sharing Web App",
+			link: "https://cse110-sp25-group24.github.io/cse110-sp25-group24/",
+			categories: ["web"],
+			image:
+				"https://raw.githubusercontent.com/cse110-sp25-group24/cse110-sp25-group24/refs/heads/main/source/assets/apple-touch-icon.png",
+		},
+		{
+			id: 3,
+			title: "Floor Manager",
+			description:
+				'A Discord bot for managing the "floor" for the Poker Tritons Discord server at UC San Diego.',
+			link: "https://github.com/wwidjaja0/floor-manager",
+			categories: ["web", "bot"],
+			image:
+				"https://ugc.production.linktr.ee/1f2f5abd-744d-4563-a944-1ee1b3be84f7_Logo1024x1024.png?io=true&size=avatar-v3_0",
+		},
+	];
+	localStorage.setItem("projects", JSON.stringify(tempArray));
+
+	initProjectCards();
+	initLoadButtons();
+
+	/**
+	 * A helper function to generate project cards from an array of projects.
+	 * @param {Array} projects - an array of project objects
+	 * @return {void}
+	 */
+	function generateProjectCards(projects: Project[]) {
+		const container = document.getElementById("projects");
+		if (!container) return;
+		container.innerHTML = "";
+
+		projects.forEach((project) => {
+			const card = document.createElement("project-card");
+			card.id = project.id.toString();
+			card.setAttribute("title", project.title);
+			card.setAttribute("description", project.description);
+			card.setAttribute(
+				"categories",
+				Array.isArray(project.categories)
+					? project.categories.join(",")
+					: project.categories,
+			);
+			card.setAttribute("image", project.image);
+			card.setAttribute("link", `${project.link}` || `/project-${project.id}`);
+			container.appendChild(card);
+		});
+	}
+
+	/**
+	 * Initializes project cards by fetching data from localStorage or using a temporary array.
+	 * If localStorage is empty, it uses a predefined temporary array.
+	 * @returns {void}
+	 */
+	function initProjectCards() {
+		generateProjectCards(
+			JSON.parse(localStorage.getItem("projects") || "[]") || tempArray,
+		);
+	}
+
+	/**
+	 * Initializes the load buttons for loading projects from local storage or a remote API.
+	 * @returns {void}
+	 */
+	function initLoadButtons() {
+		const loadLocalButton = document.getElementById("load-local");
+		const loadRemoteButton = document.getElementById("load-remote");
+
+		loadLocalButton?.addEventListener("click", () => {
+			const projects =
+				JSON.parse(localStorage.getItem("projects") || "[]") || [];
+			generateProjectCards(projects);
+		});
+
+		loadRemoteButton?.addEventListener("click", () => {
+			fetch("https://my-json-server.typicode.com/wwidjaja0/cse134-hw5/projects")
+				.then((response) => response.json())
+				.then((data) => {
+					generateProjectCards(data);
+				});
+		});
+	}
+
+	class ProjectCard extends HTMLElement {
+		constructor() {
+			super();
+		}
+
+		connectedCallback() {
+			const id = this.getAttribute("id") || "";
+			const title = this.getAttribute("title") || "Untitled";
+			const description =
+				this.getAttribute("description") || "Click to see more...";
+			const categories = this.getAttribute("categories") || "";
+			const image = this.getAttribute("image") || "";
+			const link = this.getAttribute("link") || "#";
+
+			this.innerHTML += `
+		<a id="project-${id}" href="${link}">
+			<picture>
+				<img src="${image}" alt="${title}">
+			</picture>
+			<div>
+				<ul>
+					${categories
+						.split(",")
+						.map((category) => {
+							return `<li>${category}</li>`;
+						})
+						.join("")}
+				</ul>
+			</div>
+		<h3>${title}</h3>
+		<p>${description}</p></a>`;
+		}
+	}
+
+	customElements.define("project-card", ProjectCard);
+</script>
+
+<BaseLayout title="work" description="Past works from Widjaja." footerMsg="">
+	<main-header>
+		<h2>/work</h2>
+		<p>Here is a collection of my past works and projects.</p>
+	</main-header>
+	<form method="GET">
+		<search>
+			<label for="search-box">Search by title</label>
+			<input
+				id="search-box"
+				name="query"
+				type="search"
+				placeholder="Look for a project..."
+			/>
+			<button type="submit">Search</button>
+		</search>
+		<div id="load-buttons">
+			<button type="button" id="load-local">Load Local</button>
+			<button type="button" id="load-remote">Load Remote</button>
+		</div>
+	</form>
+	<section>
+		<div id="projects">
+			<noscript>Please enable JavaScript to see my projects!</noscript>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--text-color);
+		border-radius: 1rem;
+		padding: 1rem;
+
+		search {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			margin-block-end: 1rem;
+
+			label {
+				font-size: 0.85rem;
+				flex: none;
+			}
+
+			#search-box {
+				border: 0;
+				border-radius: 0.5rem;
+				width: 100%;
+
+				&::placeholder {
+					padding: 0.5rem;
+				}
+			}
+
+			button {
+				margin: 0;
+			}
+		}
+	}
+
+	#projects {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+		gap: 1rem;
+		margin: 1rem 0;
+
+		project-card {
+			border-radius: 1rem;
+			overflow: hidden;
+			border: 1px solid var(--text-color);
+			backdrop-filter: blur(0.625rem);
+
+			&:hover {
+				box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+			}
+
+			a {
+				display: block;
+				text-decoration: none;
+				height: 100%;
+
+				picture {
+					display: block;
+					width: 100%;
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						transition: transform 0.3s ease;
+					}
+				}
+
+				&:hover picture img {
+					transform: scale(1.05);
+				}
+
+				div {
+					position: absolute;
+					top: 1rem;
+					left: 1rem;
+					z-index: 2;
+
+					ul {
+						display: flex;
+						flex-wrap: wrap;
+						gap: 0.5rem;
+						list-style: none;
+						margin: 0;
+						padding: 0;
+
+						li {
+							background: var(--primary-color);
+							color: #000000;
+							padding: 0 0.5rem;
+							border-radius: 1rem;
+						}
+					}
+				}
+
+				h3 {
+					padding: 1rem 1.5rem 0.5rem;
+					margin: 0;
+				}
+
+				p {
+					padding: 0 1.5rem 1.5rem;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	#load-buttons {
+		display: flex;
+		gap: 1rem;
+
+		button {
+			flex: 1;
+			margin: 0.5rem;
+		}
+	}
+</style>

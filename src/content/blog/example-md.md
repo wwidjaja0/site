@@ -2,7 +2,7 @@
 title: 'Example Markdown File for Homework 4'
 description: 'This is an example Markdown file to demonstrate a blogging feature for homework 4.'
 pubDate: 'Jul 27 2025'
-heroImage: '../../assets/blog-placeholder-about.jpg'
+heroImage: '../../assets/imgs/404.png'
 ---
 
 ## This is a sample title

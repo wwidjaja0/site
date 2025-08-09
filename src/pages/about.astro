@@ -1,50 +1,70 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 ---
 
-<Layout
-  title="about • will widjaja"
-  description="Student, engineer, leader. Known for being 'Widjaja'."
-  footerMsg="say my name"
+<BaseLayout
+	title="about"
+	description="I am a UCSD student studying computer science."
+	footerMsg="Durian is my favorite fruit."
 >
-  <main-header>
-    <h2>/about</h2>
-  </main-header>
-  <ProfileCard
-    description="Student, engineer, leader. Known for being 'Widjaja'."
-    width={200}
-    height={200}
-  />
-  <h3>Bio</h3>
-  <p>
-    Student, engineer, leader. Sometimes cook. Sometimes singer. Known for being
-    'Widjaja'.
-  </p>
-  <h3>Professional</h3>
-  <p>
-    I am a 3rd year Computer Science Student at UC San Diego (Expected Grad: Jun
-    2026). I also work part-time as a student representative at the UCSD Triton
-    Box Office.
-  </p>
-  <p>I'm currently looking for an internship in tech.</p>
-  <p>
-    I previously worked as an intern (2024) for a very small and new startup
-    called Saciva under the Break Through Tech AI program at UCLA. But before
-    college I worked at Chick-fil-A for almost 2 years.
-  </p>
-  <h3>Hobbies</h3>
-  <p>
-    I've been cooking a lot in my free time. You can usually find posts about
-    these on my Instagram, but I might want to move them to this website
-    someday...
-  </p>
-  <p>I love a good racket sport. Hit me up for a 1v1 or 2v2 :)</p>
-  <p>
-    I love to watch anime. If I play video games they're usually very
-    competitive or purely with friends. Though I do love board games and one
-    game that combines both a competitive thinking aspect for me as well as a
-    social aspect is poker.
-  </p>
-  <p>I'm usually always doing something and learning another.</p>
-</Layout>
+	<hgroup>
+		<h2>/about</h2>
+	</hgroup>
+	<ProfileCard
+		name="William Widjaja"
+		pronouns="he/him"
+		dob={new Date(2005, 3, 31)}
+		location="La Jolla, CA"
+	/>
+	<h3>Bio</h3>
+	<p>
+		I am an Indonesian-American student at UCSD studying computers with a
+		lot of curiosity and never enough rice.
+	</p>
+	<h3>Professional</h3>
+	<p>
+		Currently, I am working as a...
+		<ul>
+			<li>
+				Student Representative at the <a
+					href="https://ucsdtritons.com/sports/2020/10/13/tickets-contact-us.aspx"
+					target="_blank">UCSD Triton Box Office</a
+				>
+			</li>
+			<li>
+				Event Director for <a
+					href="https://acmucsd.com/about"
+					target="_blank">UCSD ACM</a
+				>
+			</li>
+			<li>
+				Vice President for <a
+					href="https://linktr.ee/pokertritons"
+					target="_blank">Poker Tritons</a
+				>
+			</li>
+		</ul>
+	</p>
+	<p>
+		In the future, I hope to find more work environments that will allow me
+		to grow my skills professionally.
+	</p>
+	<p>
+		In the past, I worked as an intern for a startup called Saciva under the
+		Break Through Tech AI program at UCLA. Before college, I worked at
+		Chick-fil-A for nearly 2 years.
+	</p>
+	<h3>Hobbies</h3>
+	<p>For my main hobbies I usually...</p>
+	<ul>
+		<li>Cook.</li>
+		<li>Learn languages.</li>
+		<li>Play racket sports.</li>
+		<li>Explore new places.</li>
+		<li>Hang out with friends.</li>
+		<li>Watch Anime and KDrama.</li>
+		<li>Work on personal projects.</li>
+		<li>Play video games (Minecraft, Skyrim, Undertale, Tetris...).</li>
+	</ul>
+</BaseLayout>
