@@ -6,6 +6,9 @@ Regarding robots.txt
 All about the modern favicon
 <https://dev.to/masakudamatsu/favicon-nightmare-how-to-maintain-sanity-3al7>
 
+Why favicons are important
+<https://www.thesitewizard.com/archive/favicon.shtml>
+
 Social Media / Opengraph Tags
 <https://css-tricks.com/essential-meta-tags-social-media/>
 

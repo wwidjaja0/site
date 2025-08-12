@@ -171,10 +171,6 @@ nav {
             list-style: none;
         }
     }
-
-    label {
-        display: none;
-    }
 }
 
 .active {
