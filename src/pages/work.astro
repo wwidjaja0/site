@@ -28,8 +28,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			description: "A Card-Based Location Sharing Web App",
 			link: "https://cse110-sp25-group24.github.io/cse110-sp25-group24/",
 			categories: ["web"],
-			image:
-				"https://raw.githubusercontent.com/cse110-sp25-group24/cse110-sp25-group24/refs/heads/main/source/assets/apple-touch-icon.png",
+			image: "https://raw.githubusercontent.com/cse110-sp25-group24/cse110-sp25-group24/refs/heads/main/source/assets/apple-touch-icon.png",
 		},
 		{
 			id: 3,
@@ -38,8 +37,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				'A Discord bot for managing the "floor" for the Poker Tritons Discord server at UC San Diego.',
 			link: "https://github.com/wwidjaja0/floor-manager",
 			categories: ["web", "bot"],
-			image:
-				"https://ugc.production.linktr.ee/1f2f5abd-744d-4563-a944-1ee1b3be84f7_Logo1024x1024.png?io=true&size=avatar-v3_0",
+			image: "https://ugc.production.linktr.ee/1f2f5abd-744d-4563-a944-1ee1b3be84f7_Logo1024x1024.png?io=true&size=avatar-v3_0",
 		},
 	];
 	localStorage.setItem("projects", JSON.stringify(tempArray));
@@ -69,7 +67,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					: project.categories,
 			);
 			card.setAttribute("image", project.image);
-			card.setAttribute("link", `${project.link}` || `/project-${project.id}`);
+			card.setAttribute(
+				"link",
+				`${project.link}` || `/project-${project.id}`,
+			);
 			container.appendChild(card);
 		});
 	}
@@ -100,7 +101,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		});
 
 		loadRemoteButton?.addEventListener("click", () => {
-			fetch("https://my-json-server.typicode.com/wwidjaja0/cse134-hw5/projects")
+			fetch(
+				"https://my-json-server.typicode.com/wwidjaja0/cse134-hw5/projects",
+			)
 				.then((response) => response.json())
 				.then((data) => {
 					generateProjectCards(data);
@@ -146,10 +149,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </script>
 
 <BaseLayout title="work" description="Past works from Widjaja." footerMsg="">
-	<main-header>
-		<h2>/work</h2>
+	<hgroup>
+		<h1>/work</h1>
 		<p>Here is a collection of my past works and projects.</p>
-	</main-header>
+	</hgroup>
 	<form method="GET">
 		<search>
 			<label for="search-box">Search by title</label>

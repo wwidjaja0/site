@@ -5,27 +5,27 @@ import NotFoundImage from "../assets/imgs/404.png";
 ---
 
 <BaseLayout
-  title="404"
-  description="Uh oh, I made an oopsie"
-  footerMsg='"Program received signal SIGSEGV, Segmentation fault."'
+	title="404"
+	description="Uh oh, I made an oopsie"
+	footerMsg='"Program received signal SIGSEGV, Segmentation fault."'
 >
-  <hgroup>
-    <h2>It's not you, it's me.</h2>
-    <figure>
-      <figcaption>
-        <section aria-labelledby="error-heading">
-          <p id="error-heading">
-            Whoops! I couldn't find what you were looking for.
-            <span role="img" aria-label="Playful bear face"> ( ͡° ᴥ ͡°) </span>
-          </p>
-        </section>
-      </figcaption>
-      <Image src={NotFoundImage} alt="oops! 404 page not found" />
-    </figure>
-  </hgroup>
-  <p><i>The page you requested is just barely out of reach...</i></p>
-  <p>
-    Don't fret! I can still smell the <a href="/">home page</a>
-    from here.
-  </p>
+	<hgroup>
+		<h1>It's not you, it's me.</h1>
+		<figure>
+			<figcaption>
+				<section aria-labelledby="error-heading">
+					<p id="error-heading">
+						Whoops! I couldn't find what you were looking for.
+						<span role="img" aria-label="Playful bear face"> ( ͡° ᴥ ͡°) </span>
+					</p>
+				</section>
+			</figcaption>
+			<Image src={NotFoundImage} alt="oops! 404 page not found" />
+		</figure>
+	</hgroup>
+	<p><i>The page you requested is just barely out of reach...</i></p>
+	<p>
+		Don't fret! I can still smell the <a href="/">home page</a>
+		from here.
+	</p>
 </BaseLayout>

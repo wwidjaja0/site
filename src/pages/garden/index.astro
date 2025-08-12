@@ -1,36 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-
-const posts = (await getCollection("blog")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+const allPosts = Object.values(
+	import.meta.glob("../posts/**/*.md", { eager: true }),
 );
 ---
-
-<style>
-	#wishlist {
-		list-style: none;
-
-		a {
-			transition:
-				background-color 1s ease-in,
-				color 1s ease-in;
-			background-color: transparent;
-			color: var(--primary-color, #a9ffff);
-			display: block;
-
-			&:hover {
-				transition:
-					background-color 0.1s ease-out,
-					color 0.1s ease-out;
-				background-color: var(--accent-color, #ff0045);
-				color: var(--text-color, #ffffff);
-			}
-		}
-	}
-</style>
 
 <BaseLayout
 	title="garden"
@@ -45,65 +18,16 @@ const posts = (await getCollection("blog")).sort(
 		</blockquote>
 	</hgroup>
 	<section>
-		<!-- <ul class="blog-grid">
+		<p>This is where I post about my journey on the interwebs.</p>
+		<ul>
 			{
-				posts.map((post) => (
-					<li class="post-card">
-						<a href={`/garden/${post.id}/`} class="post-link">
-							{post.data.heroImage && (
-								<div class="post-image">
-									<Image
-										width={300}
-										height={200}
-										src={post.data.heroImage}
-										alt={post.data.title}
-									/>
-								</div>
-							)}
-							<div class="post-content">
-								<h3 class="post-title">{post.data.title}</h3>
-								<p class="post-date">
-									<FormattedDate date={post.data.pubDate} />
-								</p>
-								{post.data.description && (
-									<p class="post-description">{post.data.description}</p>
-								)}
-							</div>
-						</a>
+				allPosts.map((post: any) => (
+					<li>
+						<a href={post.url}>{post.frontmatter.title}</a>
 					</li>
 				))
 			}
 		</ul>
-		<h3>My Wishlist</h3>
-		<h4>Amazon</h4>
-		<ul id="wishlist">
-			<li>
-				<a href="https://a.co/d/1ig1zzC" target="_blank">
-					<img
-						src="https://m.media-amazon.com/images/I/61qEkZZOYHL._AC_SX466_.jpg"
-						alt="Image of EPOMAKER X Aula F108 PRO"
-						width="200px"
-					/>
-					EPOMAKER X Aula F108 PRO
-				</a>
-			</li>
-			<li>
-				<a href="https://a.co/d/ccqe3U3" target="_blank">
-					<img
-						src="https://m.media-amazon.com/images/I/71y4dBd3woL._AC_SX466_.jpg"
-						alt="Image of MSI Gaming RTX 5060 Ti 16G"
-						width="200px"
-					/>
-					MSI Gaming RTX 5060 Ti 16G
-				</a>
-			</li>
-		</ul>
-		<h4>Other</h4>
-		<ul class="wishlist">
-			<li>Money</li>
-			<li>Omakase</li>
-		</ul> -->
-		<p>This page is under construction!</p>
 	</section>
 </BaseLayout>
 
