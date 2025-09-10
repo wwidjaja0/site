@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow: /_astro/
 
-Sitemap: https://wwidjaja.dev/sitemap-index.xml
+Sitemap: https://wwidjaja.com/sitemap-index.xml

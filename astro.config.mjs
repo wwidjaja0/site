@@ -8,7 +8,7 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wwidjaja.dev',
+  site: 'https://wwidjaja.com',
   integrations: [mdx(), sitemap()],
   adapter: netlify(),
 });
