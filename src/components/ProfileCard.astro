@@ -4,12 +4,11 @@ import ProfileImage from "../assets/imgs/me.jpg";
 
 interface Props {
 	name?: string;
-	pronouns?: string;
 	dob?: Date;
-	location?: string;
+	tag?: string;
 }
 
-const { name, pronouns, dob, location } = Astro.props;
+const { name, dob, tag } = Astro.props;
 const age = dob ? new Date().getFullYear() - dob.getFullYear() : "??";
 ---
 
@@ -20,11 +19,16 @@ const age = dob ? new Date().getFullYear() - dob.getFullYear() : "??";
 		align-items: center;
 		box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.1);
 		padding: 1rem;
 		margin-inline: 1rem;
 		animation-name: profileCard;
 		animation-duration: 0.5s;
 		animation-iteration-count: 1;
+	}
+
+	img {
+		border-radius: 50%;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -37,11 +41,10 @@ const age = dob ? new Date().getFullYear() - dob.getFullYear() : "??";
 </style>
 
 <div>
-	<Image src={ProfileImage} alt="An image of Widjaja" />
+	<Image src={ProfileImage} alt="An image of Widjaja" width={150} />
 	<section>
 		<h3>{name}</h3>
-		<p>Pronouns: {pronouns}</p>
 		<p>{age} years old</p>
-		<p>Based in {location}</p>
+		<p>{tag}</p>
 	</section>
 </div>

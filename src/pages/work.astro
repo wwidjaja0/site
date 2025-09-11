@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<script>
+<!-- <script>
 	interface Project {
 		id: number;
 		title: string;
@@ -143,7 +143,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	}
 
 	customElements.define("project-card", ProjectCard);
-</script>
+</script> -->
 
 <BaseLayout title="work" description="Past works from Widjaja." footerMsg="">
 	<main-header>
@@ -161,135 +161,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			/>
 			<button type="submit">Search</button>
 		</search>
-		<div id="load-buttons">
-			<button type="button" id="load-local">Load Local</button>
-			<button type="button" id="load-remote">Load Remote</button>
-		</div>
 	</form>
-	<!-- <section>
+	<section>
 		<div id="projects">
 			<noscript>Please enable JavaScript to see my projects!</noscript>
 		</div>
-	</section> -->
+	</section>
 	<p>This page is under construction!</p>
 </BaseLayout>
 
 <style>
-	form {
-		display: flex;
-		flex-direction: column;
-		border: 1px solid var(--text-color);
-		border-radius: 1rem;
-		padding: 1rem;
-
-		search {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 1rem;
-			margin-block-end: 1rem;
-
-			label {
-				font-size: 0.85rem;
-				flex: none;
-			}
-
-			#search-box {
-				border: 0;
-				border-radius: 0.5rem;
-				width: 100%;
-
-				&::placeholder {
-					padding: 0.5rem;
-				}
-			}
-
-			button {
-				margin: 0;
-			}
-		}
-	}
-
-	#projects {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-		gap: 1rem;
-		margin: 1rem 0;
-
-		project-card {
-			border-radius: 1rem;
-			overflow: hidden;
-			border: 1px solid var(--text-color);
-			backdrop-filter: blur(0.625rem);
-
-			&:hover {
-				box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
-			}
-
-			a {
-				display: block;
-				text-decoration: none;
-				height: 100%;
-
-				picture {
-					display: block;
-					width: 100%;
-
-					img {
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
-						transition: transform 0.3s ease;
-					}
-				}
-
-				&:hover picture img {
-					transform: scale(1.05);
-				}
-
-				div {
-					position: absolute;
-					top: 1rem;
-					left: 1rem;
-					z-index: 2;
-
-					ul {
-						display: flex;
-						flex-wrap: wrap;
-						gap: 0.5rem;
-						list-style: none;
-						margin: 0;
-						padding: 0;
-
-						li {
-							background: var(--primary-color);
-							color: #000000;
-							padding: 0 0.5rem;
-							border-radius: 1rem;
-						}
-					}
-				}
-
-				h3 {
-					padding: 1rem 1.5rem 0.5rem;
-					margin: 0;
-				}
-
-				p {
-					padding: 0 1.5rem 1.5rem;
-					margin: 0;
-				}
-			}
-		}
-	}
-
-	#load-buttons {
-		display: flex;
-		gap: 1rem;
-
-		button {
-			flex: 1;
-			margin: 0.5rem;
-		}
-	}
+	/* Style here later */
 </style>
