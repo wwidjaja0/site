@@ -7,8 +7,6 @@ import FormattedDate from "../../components/FormattedDate.astro";
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
-const allPosts = Object.values(import.meta.glob('./*.md', { eager: true }));
 ---
 
 <style>
@@ -105,7 +103,7 @@ const allPosts = Object.values(import.meta.glob('./*.md', { eager: true }));
 			<li>Money</li>
 			<li>Omakase</li>
 		</ul> -->
-		{allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+		{posts.map((post: any) => <li><a href={`/garden/${post.id}/`}>{post.data.title}</a></li>)}
 	</section>
 </BaseLayout>
 

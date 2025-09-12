@@ -1,20 +1,37 @@
-
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavLink from "../../components/NavLink.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  return [
-    { params: { tag: "astro" } },
-    { params: { tag: "successes" } },
-    { params: { tag: "community" } },
-    { params: { tag: "blogging" } },
-    { params: { tag: "setbacks" } },
-    { params: { tag: "learning in public" } },
+  const posts = await getCollection("blog");
+
+  const uniqueTags = [
+    ...new Set(posts.map((post: any) => post.data.tags).flat()),
   ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = posts.filter((post: any) =>
+      post.data.tags.includes(tag),
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
+const { posts } = Astro.props;
 ---
+
 <BaseLayout title={tag}>
   <p>Posts tagged with {tag}</p>
+  <ul>
+    {
+      posts.map((post: any) => (
+        <li><NavLink href={`/posts/${post.id}/`}>{post.data.title}</NavLink></li>
+      ))
+    }
+  </ul>
 </BaseLayout>

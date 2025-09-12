@@ -1,9 +1,12 @@
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+// Import the glob loader
+import { glob } from "astro/loaders";
+// Import utilities from `astro:content`
+import { z, defineCollection } from "astro:content";
 
+// Define a `loader` and `schema` for each collection
 const blog = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
-	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+	loader: glob({ base: './src/content/blogs', pattern: '**/*.{md,mdx}' }),
 	// Type-check frontmatter using a schema
 	schema: ({ image }) =>
 		z.object({
@@ -13,7 +16,9 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
+			tags: z.array(z.string()),
 		}),
 });
 
+// Export a single `collections` object to register your collection(s)
 export const collections = { blog };
