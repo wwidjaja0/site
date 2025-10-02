@@ -1,12 +1,68 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlockLink from "../components/BlockLink.astro";
 ---
 
 <BaseLayout>
-	<hgroup style="margin-block-start: 1rem;">
-		<h2>Hello there. I'm Widjaja.</h2>
-		<pre
-			style="line-height: 1;">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	<p>
+		I'm currently an undergraduate at UCSD studying computer science. My
+		main focus at the moment is software engineering. I've been super into
+		frontend and backend web development, as well as <strong>RUST</strong>y
+		Crustaceans recently so feel free to reach out if you would like to work
+		together! <a href="/blog/about-me">Read more...</a>
+	</p>
+	<p>
+		<BlockLink
+			title="Email"
+			description="contact@wwidjaja.com"
+			url="mailto:contact@wwidjaja.com"
+		/>
+		<BlockLink
+			title="GitHub"
+			description="wwidjaja0"
+			url="https://github.com/wwidjaja0/"
+		/>
+		<BlockLink
+			title="LinkedIn"
+			description="wwidjaja0"
+			url="https://www.linkedin.com/in/wwidjaja0/"
+		/>
+	</p>
+	<br>
+	<p>Some fun things I've made are:</p>
+	<p>
+		<BlockLink
+			title="this website"
+			description="you're looking at it!"
+			url="#"
+		/>
+		<BlockLink
+			title="floor-manager"
+			description="a Discord bot for managing the 'floor'"
+			url="https://github.com/wwidjaja0/floor-manager"
+		/>
+		<BlockLink
+			title="memoryspot"
+			description="a CRUD-location based web app"
+			url="https://github.com/cse110-sp25-group24/cse110-sp25-group24"
+			middle="team lead and fullstack dev"
+		/>
+		<BlockLink
+			title="opportune"
+			description="a social platform aiming to support job search"
+			url="https://github.com/CSES-Open-Source/Opportune"
+			middle="fullstack dev"
+		/>
+		<BlockLink
+			title="festive-cards"
+			description="send cards while also saving paper."
+			url="https://github.com/wwidjaja0/festive-cards"
+		/>
+	</p>
+	<br>
+	<p>
+		<pre>
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⣴⠚⡄⢫⠉⢩⠃⠀⣰⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡄⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠠⡞⠳⡜⠦⠚⠘⠒⠋⠀⢰⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠈⠚⠁⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀
@@ -23,21 +79,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠀⠀⣀⡀⠀⠉⠙⠓⠀⠀⠀⠀⠀⠀⠀
 ⠀⡗⡤⡲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⣴⣫⢸⢷⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠈⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</pre>
-	</hgroup>
-
-	<p>
-		I'm currently an undergraduate at UCSD studying computer science. My
-		main focus at the moment is software engineering. I've been super into
-		frontend and backend web development, as well as <strong>RUST</strong>y Crustaceans
-		recently so feel free to reach out if you would like to work together!
-	</p>
-	<p>
-		You can email me at <a href="mailto:contact@wwidjaja.com">
-			contact@wwidjaja.com</a
-		>, and find me in other places as <a href="contact"> wwidjaja0.</a>
-	</p>
-	<p>
-		Find out more <a href="about">about me here.</a>
+⠀⠈⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	</pre>
 	</p>
 </BaseLayout>

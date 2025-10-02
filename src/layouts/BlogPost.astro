@@ -1,49 +1,48 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import InlineLink from "../components/InlineLink.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout
-  title={frontmatter.title}
-  description={frontmatter.description}
-  footerMsg={frontmatter.footerMsg}
->
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
   <article>
-    {
-      frontmatter.heroImage && (
-        <img
-          src={frontmatter.heroImage}
-          alt={`Hero image for ${frontmatter.title}`}
-        />
-      )
-    }
-    <header class="title">
-      <h1>{frontmatter.title}</h1>
-      {
-        frontmatter.date && (
-          <div class="date">
-            Published on{" "}
-            {new Date(frontmatter.date).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-            {frontmatter.lastUpdated && (
-              <div class="last-updated-on">
-                (Last updated on{" "}
-                {new Date(frontmatter.lastUpdated).toLocaleDateString(
-                  undefined,
-                  { year: "numeric", month: "long", day: "numeric" },
-                )}
-                )
-              </div>
-            )}
-          </div>
-        )
-      }
-    </header>
+    <hgroup>
+      <h2>{frontmatter.title}</h2>
+      <div>
+        {
+          frontmatter.published && (
+            <aside>
+              Published:{" "}
+              {new Date(frontmatter.published).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </aside>
+          )
+        }
+        {
+          frontmatter.lastUpdated && (
+            <aside>
+              Last updated:{" "}
+              {new Date(frontmatter.lastUpdated).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </aside>
+          )
+        }
+      </div>
+    </hgroup>
     <hr />
+    {
+      frontmatter.tags &&
+        frontmatter.tags.map((tag: any) => (
+          <InlineLink href={`/tags/${tag}`}>#{tag}</InlineLink>
+        ))
+    }
     <slot />
   </article>
 </BaseLayout>

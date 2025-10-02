@@ -1,0 +1,16 @@
+---
+import BlockLink from "./BlockLink.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    lastUpdated: string;
+    url: string;
+}
+
+const { title = "Blog", description = "...", lastUpdated = "", url = "#" } = Astro.props;
+---
+
+<div>
+    <BlockLink title={title} middle={lastUpdated} description={description} url={url} />
+</div>

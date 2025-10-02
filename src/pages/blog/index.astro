@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogLink from "../../components/BlogLink.astro";
+import InlineLink from "../../components/InlineLink.astro";
+
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+);
+
+const uniqueTags = [
+	...new Set(posts.map((post: any) => post.data.tags).flat()),
+];
+---
+
+<BaseLayout title="blog" description="See my notes, thoughts, and originals.">
+	<hgroup>
+		<h2>Blog Posts</h2>
+		<span>
+			{
+				uniqueTags.map((tag: any) => (
+					<InlineLink href={`/tags/${tag}`}>#{tag}</InlineLink>
+				))
+			}
+		</span>
+	</hgroup>
+	<section>
+		{
+			posts.map((post: any) => (
+				<BlogLink
+					title={post.data.title}
+					description={post.data.description}
+					lastUpdated={post.data.lastUpdated?.toLocaleDateString(
+						"en-us",
+						{
+							year: "numeric",
+						},
+					)}
+					url={`/blog/${post.id}/`}
+				/>
+			))
+		}
+	</section>
+</BaseLayout>

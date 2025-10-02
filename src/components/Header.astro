@@ -1,24 +1,16 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../assets/imgs/logo.png";
 
-import NavLink from "./NavLink.astro";
+import InlineLink from "./InlineLink.astro";
 ---
 
 <header>
 	<nav>
-		<top-nav>
-			<NavLink href="/">
-				<Image height=40 id="logo" src={logo} alt="Logo of Widjaja" />
-			</NavLink>
-		</top-nav>
-		<bottom-nav>
-			<ul>
-				<li><NavLink href="/about">about</NavLink></li>
-				<li><NavLink href="/garden">garden</NavLink></li>
-				<li><NavLink href="/contact">contact</NavLink></li>
-				<li><NavLink href="/work">work</NavLink></li>
-			</ul>
-		</bottom-nav>
+		<InlineLink href="/">
+			<h1>William Widjaja</h1>
+		</InlineLink>
+		<ul>
+			<li><InlineLink href="/blog">blog</InlineLink></li>
+		</ul>
 	</nav>
 </header>

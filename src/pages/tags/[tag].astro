@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NavLink from "../../components/NavLink.astro";
+import BlogLink from "../../components/BlogLink.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -26,12 +26,21 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout title={tag}>
-  <p>Posts tagged with {tag}</p>
-  <ul>
+  <hgroup>
+    <h2>Posts tagged with {tag}</h2>
+  </hgroup>
+  <section>
     {
       posts.map((post: any) => (
-        <li><NavLink href={`/posts/${post.id}/`}>{post.data.title}</NavLink></li>
+        <BlogLink
+          title={post.data.title}
+          description={post.data.description}
+          lastUpdated={post.data.lastUpdated?.toLocaleDateString("en-us", {
+            year: "numeric",
+          })}
+          url={`/blog/${post.id}/`}
+        />
       ))
     }
-  </ul>
+  </section>
 </BaseLayout>

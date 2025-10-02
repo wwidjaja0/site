@@ -9,9 +9,9 @@ export async function GET(context) {
         site: context.site,
         items: posts.map((post) => ({
             title: post.data.title,
-            pubDate: post.data.pubDate,
+            published: post.data.published,
             description: post.data.description,
-            link: `/garden/${post.id}/`,
+            link: `/blog/${post.id}/`,
         })),
         customData: `<language>en-us</language>`,
     });

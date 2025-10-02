@@ -1,0 +1,27 @@
+---
+export interface Props {
+    title: string;
+    description: string;
+    middle?: string;
+    url: string;
+}
+
+const {
+    title = "Project",
+    description = "...",
+    middle,
+    url = "#",
+} = Astro.props;
+---
+
+<div
+    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dotted gray;"
+>
+    <a href={url} style="display:flex;">
+        <p>{title}</p>
+    </a>
+    <p style="color: gray; font-size: 0.8rem; margin-block-start: 0.5rem;">{middle}</p>
+    <div>
+        <p style="font-size: 0.8rem;">{description}</p>
+    </div>
+</div>
