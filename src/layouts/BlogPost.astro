@@ -13,11 +13,10 @@ const { frontmatter } = Astro.props;
         {
           frontmatter.published && (
             <aside>
-              Published:{" "}
+              Pub:{" "}
               {new Date(frontmatter.published).toLocaleDateString(undefined, {
                 year: "numeric",
                 month: "long",
-                day: "numeric",
               })}
             </aside>
           )
@@ -25,11 +24,10 @@ const { frontmatter } = Astro.props;
         {
           frontmatter.lastUpdated && (
             <aside>
-              Last updated:{" "}
+              Upd:{" "}
               {new Date(frontmatter.lastUpdated).toLocaleDateString(undefined, {
                 year: "numeric",
                 month: "long",
-                day: "numeric",
               })}
             </aside>
           )

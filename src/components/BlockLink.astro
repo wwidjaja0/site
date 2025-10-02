@@ -17,11 +17,19 @@ const {
 <div
     style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dotted gray;"
 >
-    <a href={url} style="display:flex;">
-        <p>{title}</p>
-    </a>
-    <p style="color: gray; font-size: 0.8rem; margin-block-start: 0.5rem;">{middle}</p>
     <div>
-        <p style="font-size: 0.8rem;">{description}</p>
+        <a href={url} style="display:flex;">
+            <p>{title}</p>
+        </a>
+        {
+            middle && (
+                <p style="color: gray; font-size: 0.8rem; margin-block-start: 0rem;">
+                    {middle}
+                </p>
+            )
+        }
+    </div>
+    <div>
+        <p style="font-size: 0.8rem; margin-block-start: 0;">{description}</p>
     </div>
 </div>

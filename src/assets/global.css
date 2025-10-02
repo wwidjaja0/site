@@ -191,11 +191,33 @@ main {
 }
 
 @media screen and (max-width: 768px) {
+    hgroup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            justify-content: center;
+        }
+    }
+
+    aside {
+        display: none;
+    }
+
     nav {
         margin: 0 1rem;
 
         ul {
             flex-wrap: wrap;
         }
+    }
+
+    pre {
+        font-size: 0.7rem;
     }
 }
