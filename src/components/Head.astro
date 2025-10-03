@@ -18,7 +18,7 @@ interface Props {
  */
 const {
   title = "wwidjaja.com",
-  description = 'Welcome to my home. Here, have some water: C|_|',
+  description = "Welcome to my home. Here, have some water: C|_|",
   opengraphType = "website",
   aboutURL = new URL("/about", Astro.site),
 } = Astro.props;
@@ -39,6 +39,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="title" content={title} />
   <meta name="description" content={description} />
   <link rel="author" href={aboutURL} />
+
+  <link
+    rel="preload"
+    href="/JetBrainsMono-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
 
   <!-- Inspired by Adam Coti's The Essential Meta Tags for Social Media -->
 
