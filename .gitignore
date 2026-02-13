@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # temporary files
 .temp/
+
+# VS Code settings
+.vscode/
